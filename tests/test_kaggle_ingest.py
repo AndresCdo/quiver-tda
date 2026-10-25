@@ -50,6 +50,7 @@ for a in "$@"; do
   esac
 done
 [ -n "$FAKE_LOG" ] && echo "$FAKE_LOG"
+echo "surya-backend=${SURYA_INFERENCE_BACKEND:-unset}"
 exit "${FAKE_EXIT:-0}"
 """
 
@@ -199,6 +200,13 @@ class IngestRunTest(unittest.TestCase):
         self.assertFalse(
             (self.ws / "guidance/reference-papers" / f"{SHEEHY}.pdf").exists()
         )
+
+    def test_extractor_runs_on_llamacpp_never_docker_vllm(self):
+        # Kaggle has no Docker, and surya picks vllm (Docker) on any NVIDIA GPU.
+        with mock.patch.dict(os.environ, {"SURYA_INFERENCE_BACKEND": "vllm"}):
+            K.run(papers=[SHEEHY], scratch=str(self.ws))
+        self.assertIn("surya-backend=llamacpp", (self.out / "ingest.log").read_text())
+        self.assertEqual(self.shard()["summary"]["inference_backend"], "llamacpp")
 
     def test_unknown_stem_is_refused(self):
         with self.assertRaises(ValueError):

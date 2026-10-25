@@ -112,6 +112,9 @@ CLONE_ROOT = Path(__file__).resolve().parents[2]
 
 ENV_REL = Path(".micromamba/envs/papersmith")
 
+# surya's OCR backend on the worker: llama.cpp, never vllm (needs Docker).
+INFERENCE_BACKEND = "llamacpp"
+
 FAILURE_NEEDLES = [
     ("equation_failures", "Equation recognition failed"),
     ("ocr_failures", "OCR failed"),
@@ -291,6 +294,12 @@ def _ingest(
     env = dict(os.environ)
     env["PATH"] = f"{env_dir / 'bin'}{os.pathsep}{env.get('PATH', '')}"
     env["LLAMA_CPP_BINARY"] = str(env_dir / "bin/llama-server")
+    # On an NVIDIA GPU surya defaults to its vllm backend, which runs a
+    # Docker container; Kaggle kernels have no Docker. The CUDA llama.cpp
+    # build checked above does the same OCR on the GPU (surya offloads all
+    # layers by default, LLAMA_CPP_NGL=99).
+    env["SURYA_INFERENCE_BACKEND"] = INFERENCE_BACKEND
+    summary["inference_backend"] = INFERENCE_BACKEND
     cmd = [
         str(env_dir / "bin/python"),
         "skills/paper-ingestion/scripts/extract_pdf.py",
