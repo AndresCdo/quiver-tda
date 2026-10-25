@@ -1,0 +1,58 @@
+{
+  "accelerator": {
+    "architectures": [
+      "sm_75"
+    ],
+    "kind": "cuda"
+  },
+  "clonePaths": [
+    "src/quiver_ingest",
+    "scripts/setup_env.py",
+    "skills/paper-ingestion",
+    "papersmith.yaml"
+  ],
+  "commit": "aec8d44fda99ebc0326c303b101ff130eb9338b7",
+  "jobName": "ingest-gpu",
+  "product": "quiver-ingest",
+  "repo": {
+    "ref": "agent/kaggle-ingest",
+    "url": "https://github.com/AndresCdo/quiver-tda.git"
+  },
+  "run": {
+    "function": "run",
+    "kwargs": {},
+    "module": "quiver_ingest.kaggle_ingest",
+    "smoke": {
+      "function": "smoke",
+      "kwargs": {},
+      "module": "quiver_ingest.kaggle_ingest",
+      "requiredEvidence": [
+        "evidence.commit",
+        "evidence.gpu",
+        "evidence.cuda",
+        "evidence.allIngested",
+        "evidence.mathFound",
+        "evidence.cleanInference"
+      ]
+    }
+  },
+  "runnerTemplate": [
+    {
+      "path": "assets/runner_bootstrap.py",
+      "sha256": "b5767143f394dc80217522422bff6449466682ff5a62c60d7a73f04ac0052070"
+    },
+    {
+      "path": "assets/runner_invoke.py",
+      "sha256": "501cc19be51e4af0f331d30356b9361268b2da690a0798771adf33684f7080e8"
+    }
+  ],
+  "schemaVersion": 1,
+  "service": "kaggle",
+  "unresolvedReads": [
+    "/home/andres/Downloads/quiver-tda_entrega_2026-10-19/quiver-tda_entrega/quiver-tda/src/quiver_ingest/kaggle_ingest.py:164: md.read_text(encoding='utf-8', errors='replace') \u2014 read call on a path that could not be resolved",
+    "/home/andres/Downloads/quiver-tda_entrega_2026-10-19/quiver-tda_entrega/quiver-tda/src/quiver_ingest/kaggle_ingest.py:320: log_path.read_text(encoding='utf-8', errors='replace') \u2014 read call on a path that could not be resolved",
+    "/home/andres/Downloads/quiver-tda_entrega_2026-10-19/quiver-tda_entrega/quiver-tda/src/quiver_ingest/kaggle_ingest.py:136: path.open('rb') \u2014 read call on a path that could not be resolved",
+    "/home/andres/Downloads/quiver-tda_entrega_2026-10-19/quiver-tda_entrega/quiver-tda/src/quiver_ingest/kaggle_ingest.py:183: (out_dir / 'run-config.json').read_text(encoding='utf-8') \u2014 read call on a path that could not be resolved",
+    "/home/andres/Downloads/quiver-tda_entrega_2026-10-19/quiver-tda_entrega/quiver-tda/src/quiver_ingest/kaggle_ingest.py:196: metas[-1].read_text(encoding='utf-8') \u2014 read call on a path that could not be resolved"
+  ]
+}
