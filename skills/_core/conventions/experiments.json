@@ -1,0 +1,8 @@
+{
+  "$comment": "The one experiment convention both experimental skills read: experimental-deliberation (reference-experimental.ts, profile.ts) and experimental-implementation (impl_profile.py). An experiment declares [<declares>:<id>] in its own heading; a claim cites it as [<cites>:<id>] or in prose; [<outOfScope>:<id>] marks a proposal claim the document deliberately does not test (experimental-implementation's agree stops reporting it as untested). '{identifier}' inside proseReference is replaced by 'identifier'. Edit here, never in either reader.",
+  "identifier": "[A-Za-z0-9][A-Za-z0-9._-]*",
+  "declares": "exp",
+  "cites": "tests",
+  "proseReference": "\\((?:Exp|Experiment)\\.\\s*({identifier})\\)",
+  "outOfScope": "out-of-scope"
+}

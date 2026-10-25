@@ -1,0 +1,5 @@
+{
+  "$comment": "The one section-label convention both implementation skills read (proposal-implementation and experimental-implementation impl_profile.py, handed to the shared engine as documents[0].section_heading) so verify speaks per-section drift in the labels a revision carries. A section is an ATX heading whose first token is a label: optional letters, then digits, then optional dotted digit groups (3, 3.1, O1, H2.1), optionally closed by one closer character, then whitespace or the end of the line. A labelled heading nested under a shallower labelled heading belongs to both. A profile may add a per-document heading marker (section_heading.marker). Edit here, never in a reader.",
+  "label": "[A-Za-z]*[0-9]+(?:\\.[0-9]+)*",
+  "closer": "[.):]"
+}

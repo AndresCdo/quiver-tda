@@ -1,0 +1,19 @@
+{
+  "surface": "self-guarded-facts",
+  "exclude": ["__pycache__/*", "*.pyc", ".DS_Store"],
+  "mutations": [
+    {
+      "fact": "the schema version SKILL.md's own prose is held to",
+      "file": "scripts/audit_cli.py",
+      "line": 3901,
+      "literal": "REPORT_SCHEMA_VERSION = 1",
+      "replacement": "REPORT_SCHEMA_VERSION = 97",
+      "observe": {
+        "argv": [".venv/bin/python", "-m", "unittest",
+                 "tests.test_skill_audit.SchemaVersionDerivationTests"],
+        "cwd": ".",
+        "env": ["PATH", "HOME"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "surface": "self-computed-values",
+  "declared": {
+    "path": "SKILL.md",
+    "table": "| Metric | Value |",
+    "column": 1
+  },
+  "disk": {
+    "root": "."
+  },
+  "argv": ["true"],
+  "cwd": ".",
+  "env": ["PATH"],
+  "exclude": ["__pycache__/*", "*.pyc", ".DS_Store"]
+}

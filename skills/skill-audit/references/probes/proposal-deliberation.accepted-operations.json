@@ -1,0 +1,40 @@
+{
+  "surface": "accepted-operations",
+  "probe": "refusal",
+  "argv": ["node", "cli.mjs", "{\"operation\":\"__AUDIT_NONCE__\",\"instruction\":\"probe\"}"],
+  "cwd": ".",
+  "stream": "stdout",
+  "exit": 1,
+  "extract": "is not one of (?P<roster>[^\"]+)",
+  "split": ", ",
+  "doctrineSites": [
+    {
+      "path": "SKILL.md",
+      "table": "| Operation | Use it for |",
+      "column": 0,
+      "scope": "complement",
+      "headingVerbatim": "## Other engine operations"
+    },
+    {"path": "references/usage.md", "table": null},
+    {
+      "path": "tests/proposal-deliberation-cli-operation-surface.test.mjs",
+      "root": "repo",
+      "table": null
+    }
+  ],
+  "restatementSearch": {
+    "quorum": 4,
+    "paths": [
+      {"path": "SKILL.md"},
+      {"path": "references/usage.md"},
+      {
+        "path": "tests/proposal-deliberation-cli-operation-surface.test.mjs",
+        "root": "repo"
+      }
+    ]
+  },
+  "numeralPaths": [
+    {"path": "SKILL.md"},
+    {"path": "references/usage.md"}
+  ]
+}

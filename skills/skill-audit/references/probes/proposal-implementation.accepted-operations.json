@@ -1,0 +1,11 @@
+{
+  "surface": "accepted-operations",
+  "probe": "refusal",
+  "argv": ["python3", "scripts/implementation_cli.py", "__AUDIT_NONCE__"],
+  "cwd": ".",
+  "stream": "stderr",
+  "exit": 2,
+  "extract": "choose from (?P<roster>[^)]+)\\)",
+  "split": ", ",
+  "doctrineSites": [{"path": "SKILL.md", "table": null}]
+}

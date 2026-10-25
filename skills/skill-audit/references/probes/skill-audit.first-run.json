@@ -1,0 +1,33 @@
+{
+  "surface": "first-run",
+  "steps": [
+    {
+      "name": "check-report refuses to read a report that does not exist yet",
+      "argv": ["python3", "{subject}/scripts/audit_cli.py", "check-report",
+                "{box}/no-such-report.md"],
+      "expect": {"exit": 2, "stdout": "\"status\": \"unreadable\""},
+      "readOnly": true
+    },
+    {
+      "name": "check-report accepts the shipped example report",
+      "argv": ["python3", "{subject}/scripts/audit_cli.py", "check-report",
+                "{subject}/references/example-report.md"],
+      "expect": {"exit": 0, "stdout": "\"violations\": \\[\\]"},
+      "readOnly": true
+    },
+    {
+      "name": "roster against the auditor's own subcommand surface",
+      "argv": ["python3", "{subject}/scripts/audit_cli.py", "roster",
+                "--subject", "{subject}", "--probe-spec",
+                "{subject}/references/probes/skill-audit.subcommands.json",
+                "--repo-root", "{repoRoot}"],
+      "expect": {"exit": 0, "stdout": "\"unregistered\": \\[\\]"},
+      "readOnly": true
+    }
+  ],
+  "candidateGates": {
+    "refusal": "invalid choice",
+    "argv": ["python3", "{subject}/scripts/audit_cli.py", "{candidate}"],
+    "candidates": ["roster", "structure", "walkthrough", "check-report"]
+  }
+}

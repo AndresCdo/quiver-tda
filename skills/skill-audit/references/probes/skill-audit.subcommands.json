@@ -1,0 +1,15 @@
+{
+  "surface": "subcommands",
+  "probe": "refusal",
+  "argv": ["python3", "scripts/audit_cli.py", "__AUDIT_NONCE__"],
+  "cwd": ".",
+  "stream": "stderr",
+  "exit": 2,
+  "extract": "choose from (?P<roster>[^)]+)\\)",
+  "split": ", ",
+  "doctrineSites": [
+    {"path": "SKILL.md", "table": "| Subcommand | Derives | Emits |", "column": 0}
+  ],
+  "restatementSearch": {"quorum": 2, "paths": [{"path": "SKILL.md"}]},
+  "numeralPaths": [{"path": "SKILL.md"}]
+}

@@ -1,0 +1,12 @@
+# Credenciales de Kaggle: acá viven tokens, nunca se versionan.
+#
+# Se ignora TODO el contenido de la carpeta, no `accounts.json` por nombre. Una
+# regla por nombre protege el archivo que existe hoy; esta protege también al
+# temporal de una escritura interrumpida y a cualquier archivo que agreguemos
+# después. Un token commiteado es un token quemado, y no hay `git rm` que lo
+# despublique.
+#
+# El `.gitignore` se versiona (por eso la excepción) para que la protección
+# exista ANTES de que se guarde la primera credencial, no después.
+*
+!.gitignore

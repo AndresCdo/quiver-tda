@@ -1,0 +1,24 @@
+{
+  "surface": "shipped-files",
+  "declared": {
+    "path": "SKILL.md",
+    "table": "| Path | Holds |",
+    "column": 0
+  },
+  "disk": {
+    "root": "."
+  },
+  "fromZero": {
+    "root": "build",
+    "steps": [
+      {
+        "kind": "driver",
+        "argv": ["claude", "-p",
+          "Build a command-line tool that audits another piece of software: derive what its running code actually accepts, derive separately what its own documentation claims it accepts, compare the two, and report every place they disagree. Report only; make no repair to what you find."],
+        "cwd": "build",
+        "env": ["HOME", "LANG", "PATH", "TMPDIR", "USER"]
+      }
+    ]
+  },
+  "exclude": ["__pycache__/*", "*.pyc", ".DS_Store"]
+}

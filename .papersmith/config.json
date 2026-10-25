@@ -1,0 +1,23 @@
+{
+  "project_name": "quiver-tda",
+  "active_tools": [
+    "claude"
+  ],
+  "agent_models": {
+    "paper-ingestion": "sonnet",
+    "proposal-deliberator": "opus",
+    "math-auditor": "opus",
+    "code-materializer": "sonnet",
+    "remote-orchestrator": "haiku"
+  },
+  "execution_engine": {
+    "active_compute_target": "local-workstation",
+    "active_profile": "smoke_and_invariants",
+    "accounts_store_path": "skills/kaggle-accounts/store/accounts.json",
+    "ledger_path": ".papersmith/runs_ledger.jsonl",
+    "auto_retry_failed_shards": true,
+    "max_retries": 2
+  },
+  "created_at": "2026-10-19T16:30:04Z",
+  "updated_at": "2026-10-19T16:30:04Z"
+}

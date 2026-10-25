@@ -1,0 +1,7 @@
+{
+  "surface": "subcommands",
+  "site": "SKILL.md's own subcommand table, read by reader B",
+  "members": ["walkthrough", "structure", "roster", "reading-diff",
+              "check-report"],
+  "reader": "reader-b"
+}

@@ -1,0 +1,17 @@
+{
+  "surface": "decision-gates",
+  "exclude": ["__pycache__/*", "*.pyc", ".DS_Store"],
+  "interpreterAllowlist": ["python3"],
+  "env": ["HOME", "LANG", "LC_ALL", "PATH", "TERM", "TMPDIR", "USER"],
+  "states": [
+    {
+      "name": "A from-zero box already holds files",
+      "site": {"root": "subject", "path": "SKILL.md"},
+      "extract": "A from-zero box already holds files[\\s\\S]{0,400}?```\\n\\$ (?P<act>.+)\\n```"
+    },
+    {
+      "name": "not adjudicable: build-or-delete",
+      "judgement": true
+    }
+  ]
+}

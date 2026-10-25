@@ -1,0 +1,20 @@
+{
+  "surface": "accepted-operations",
+  "probe": "refusal",
+  "argv": ["python3", "scripts/remote_cli.py", "__AUDIT_NONCE__"],
+  "cwd": ".",
+  "stream": "stderr",
+  "exit": 2,
+  "minInterpreterVersion": "3.10",
+  "extract": "choose from (?P<roster>[^)]+)",
+  "split": ", ",
+  "doctrineSites": [
+    {"path": "SKILL.md", "table": "| Command | What it does |", "column": 0}
+  ],
+  "restatementSearch": {
+    "quorum": 4,
+    "paths": [
+      {"path": "SKILL.md"}
+    ]
+  }
+}

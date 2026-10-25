@@ -1,0 +1,15 @@
+# Paper-ingestion engine — Python dependencies (local, keyless).
+#
+# Install into the skill's isolated venv:
+#   python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# (or just run ./setup.sh, which also handles the system dependency below)
+#
+# Pulls a large ML stack transitively: torch, surya-ocr, transformers, opencv.
+#
+# SYSTEM DEPENDENCY — NOT installable via pip:
+#   surya-ocr runs its recognition model through llama.cpp and needs the
+#   `llama-server` binary on PATH. Install it with `brew install llama.cpp`
+#   (handled automatically by setup.sh).
+
+marker-pdf==2.0.0
+PyYAML>=6.0

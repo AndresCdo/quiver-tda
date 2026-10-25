@@ -1,0 +1,13 @@
+{
+  "surface": "self-checks",
+  "checks": [
+    {
+      "name": "SelfAuditSubcommandRosterTests.test_the_subcommand_roster_reports_three_sets_and_no_boolean",
+      "site": {"root": "repo", "path": "tests/test_skill_audit.py"}
+    },
+    {
+      "name": "SelfAuditSubcommandRosterTests.test_the_roster_comes_from_argparse_and_not_from_a_list",
+      "site": {"root": "repo", "path": "tests/test_skill_audit.py"}
+    }
+  ]
+}

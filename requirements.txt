@@ -1,0 +1,44 @@
+# The forge's OWN dependencies. This file is the manifest of the virtualenv the
+# suite runs under -- not a target's, and not optional: measured on 2026-09-08,
+# a bare interpreter without these collected 2020 of 2750 tests and reported OK
+# over every one it managed to reach, which is indistinguishable from a green
+# suite. Three whole test modules failed to import and said nothing anybody
+# read. `tests/test_suite_collects.py` is stdlib-only for exactly that reason
+# and names any module that does not load.
+requests>=2.31        # tests/test_remote_execution.py: the adapter's wire tests
+nbformat>=5.9         # remote-execution's runner/notebook assembly and its tests
+nbclient>=0.9         # executing a scaffolded notebook inside a test
+ipykernel>=6.29       # the kernel that execution resolves; without it a notebook test cannot run
+numpy>=1.26           # a scaffolded target computes with it before any conversion
+pytest>=8.0           # the suite a scaffolded target ships, run by tests that build one
+pytest-xdist>=3.5     # `npm run test:py:par`: `-n 8 --dist loadfile`; the other modes race on `implementations/`
+torch>=2.0            # the kit's own `benchmark.py` imports it, so every test that
+# builds a target from the kit and introspects it needs it present. It is the
+# heaviest entry here by a wide margin, and it was measured rather than assumed:
+# without it 18 of this suite's tests fail, all of them reporting something other
+# than the missing package -- four routed a kit-built target to `env-first`, which
+# reads as a defect in the target rather than an absence in the environment.
+PyMuPDF>=1.23
+PyYAML>=6.0
+jsonschema>=4.0
+kagglesdk==0.1.37  # published standalone since 2025-07-11; NOT vendored inside
+# the `kaggle` CLI distribution -- that claim was true of `kaggle==1.7.4.5`
+# and is retired here, not carried forward. `adapters/kaggle_driver.py` is
+# the only file in this skill permitted to import it; kagglesdk/kaggle_http_client.py:14-17
+# documents its Bearer-auth path as mid-migration ("This was created from
+# kaggle_api_client.py, prior to recent changes to auth handling. The new
+# client requires KAGGLE_API_TOKEN, so it is not currently usable by the CLI.")
+# -- pinned at the version this was measured against; a drift is
+# locked by DoctrinePinTests in tests/test_remote_execution.py. Requires
+# Python >=3.11; this repository's own forge venv runs 3.12.
+
+# Paper Command Center (`papersmith ui`) -- the local dashboard server that
+# ships inside every workspace at `skills/_core/command_center/`. It is
+# standalone from the forge CLI: a workspace's own venv (built from the kit's
+# `requirements.txt`) runs `python -m skills._core.command_center.server`
+# without Node/npm. Measured on 2026-05-18: all four resolve on CPython 3.14
+# (watchfiles ships `cp310-abi3` wheels), and CI runs them on 3.11/3.12.
+fastapi>=0.110        # HTTP routing + static mount for the command center API
+uvicorn>=0.27         # ASGI server the `papersmith ui` command launches
+watchfiles>=0.21      # debounced filesystem watching behind the SSE channel
+pydantic>=2.0         # response models for /api/state and /api/health/wiring
